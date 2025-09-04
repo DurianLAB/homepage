@@ -2,7 +2,7 @@
 
 # DurianLAB Consulting
 
-[![Build Status](https://github.com/durianlab/durianlab-consulting/actions/workflows/build-docker.yml/badge.svg)](https://github.com/durianlab/durianlab-consulting/actions/workflows/build-docker.yml)
+[![Build Status](https://github.com/DurianLAB/homepage/actions/workflows/build-docker.yml/badge.svg)](https://github.com/DurianLAB/homepage/actions/workflows/build-docker.yml)
 
 This repository contains the frontend for DurianLAB Consulting website.
 

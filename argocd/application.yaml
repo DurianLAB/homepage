@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/durianlab-frontend.git
+    repoURL: https://github.com/DurianLAB/homepage.git
     targetRevision: HEAD
     path: helm-chart
     helm:
