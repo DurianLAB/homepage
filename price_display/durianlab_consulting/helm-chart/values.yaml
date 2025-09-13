@@ -3,7 +3,7 @@
 replicaCount: 1
 
 image:
-  repository: durianlab/frontend
+  repository: phamduchongan93/durianlab-consulting
   pullPolicy: IfNotPresent
   tag: "latest"
 
