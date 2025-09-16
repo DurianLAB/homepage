@@ -200,6 +200,203 @@ h2 {
     font-size: 0.95rem;
 }
 
+/* Pricing Section */
+#pricing {
+    background-color: var(--background-dark);
+}
+
+.pricing-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 4rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pricing-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.pricing-category {
+    background-color: var(--background-mid);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pricing-category h3 {
+    font-size: 2rem;
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.category-description {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+}
+
+.pricing-tiers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.pricing-tier {
+    background-color: var(--background-dark);
+    padding: 2.5rem;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pricing-tier:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-green);
+    box-shadow: 0 8px 25px rgba(92, 138, 59, 0.2);
+}
+
+.pricing-tier.featured {
+    border-color: var(--primary-green);
+    position: relative;
+}
+
+.pricing-tier.featured::before {
+    content: "POPULAR";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.pricing-tier h4 {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-green);
+    margin-bottom: 2rem;
+}
+
+.price span {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: normal;
+}
+
+.pricing-tier ul {
+    list-style: none;
+    text-align: left;
+}
+
+.pricing-tier li {
+    padding: 0.5rem 0;
+    color: var(--text-light);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.pricing-tier li::before {
+    content: "✓";
+    color: var(--primary-green);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.pricing-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.pricing-option {
+    background-color: var(--background-dark);
+    padding: 2.5rem;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.pricing-option:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-green);
+    box-shadow: 0 8px 25px rgba(92, 138, 59, 0.2);
+}
+
+.pricing-option.featured {
+    border-color: var(--primary-green);
+    position: relative;
+}
+
+.pricing-option.featured::before {
+    content: "MOST POPULAR";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.pricing-option h4 {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.pricing-option p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+.pricing-cta {
+    background-color: var(--background-mid);
+    padding: 3rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.pricing-cta h3 {
+    font-size: 2rem;
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+
+.pricing-cta p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
 /* Contact Form */
 #contact-form {
     display: flex;
@@ -400,6 +597,12 @@ address {
     .services-grid, .projects-grid {
         grid-template-columns: 1fr;
     }
+    .pricing-tiers, .pricing-options {
+        grid-template-columns: 1fr;
+    }
+    .pricing-category {
+        padding: 2rem;
+    }
     .footer-icons {
         flex-direction: column;
         gap: 2rem;
@@ -417,6 +620,12 @@ address {
         font-size: 1.8rem;
     }
     .service-card, .project-card, #contact-form {
+        padding: 2rem 1.5rem;
+    }
+    .pricing-tier, .pricing-option {
+        padding: 2rem 1.5rem;
+    }
+    .pricing-cta {
         padding: 2rem 1.5rem;
     }
     .footer-container {

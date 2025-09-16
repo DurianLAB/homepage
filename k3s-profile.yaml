@@ -1,0 +1,32 @@
+config:
+  limits.cpu: "2"
+  limits.memory: 1GB
+  user.vendor-data: |
+    #cloud-config
+    package_update: true
+    packages:
+      - openssh-server
+    runcmd:
+      # Create the 'anpham' user, set home directory, and add to sudo group
+      - [ useradd, -m, -s, /bin/bash, -G, sudo, anpham ]
+      # Ensure .ssh directory exists with correct permissions
+      - [ mkdir, -p, /home/anpham/.ssh ]
+      - [ chmod, 700, /home/anpham/.ssh ]
+      # Add SSH key
+      - [ bash, -c, "echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5fRJ8pq1hpTEnZDrUaOZo4sAdl4Y2Mwl/EclmDq8Bo6H0k4fq57l6wZXgcYGkbzWHWx4JdT8jZGS+Ua+v16n6/HCZhXyH8Y9wXfTeknGzzWFXiIZHd2ULX7ePjaNP3mGSGKUdnJAkiQM9hVqAKf6EqMeOEMkiGjtLFD3kMikoIGUFWrB06qAKQY4JQ+0V/9Ep1H95FkBLsnCpy0etqf5RxlI8jDJQzPD9uMPM2tN3yyzTpPRV5HRwqppBYV/xW/Bej7SxQj2yZVGr/nXIuoD9/9+DGAmQtJktePlR6UPnuU8j/UAi9DwAAlTr8v6yR2RkznSK7aL2uhiYKMz1RMvvKSG1K5YsUoWFJDyBSZVo6xc95BUfrI+japvDS2ZVb+d+sMYHhTvk7Pt7+qZujuuZp4Rw1UtnXD+tVbKNyTiz6lUKuhp3NJwVfjEyTQSqHmIm4NGnYmIG04/ltrngvnN7ZOOfkMH2HIlAb3NC4YesgNZRvu5OyYJf0k17LgZaDXc= anpham@durianlab' > /home/anpham/.ssh/authorized_keys" ]
+      # Set permissions and ownership
+      - [ chmod, 600, /home/anpham/.ssh/authorized_keys ]
+      - [ chown, -R, anpham:anpham, /home/anpham ]
+      # Start the SSH daemon
+      - [ /usr/sbin/sshd, -D ]
+description: Used this Profile to deplyment k3s cluster (Fit for webpage, light node)
+devices:
+  eth0:
+    name: eth0
+    network: incusbr0
+    type: nic
+  root:
+    path: /
+    pool: incus-data-pool
+    type: disk
+name: ubuntu-k3s-homepage
