@@ -9,6 +9,28 @@
 </head>
 <body>
 
+    <!-- Client Login Tab -->
+    <div class="login-tab" id="loginTab">
+        <div class="login-tab-header">
+            <span>Client Login</span>
+            <button class="login-tab-toggle" id="loginTabToggle">▼</button>
+        </div>
+        <div class="login-tab-content" id="loginTabContent">
+            <form id="client-login-form">
+                <div class="form-group">
+                    <label for="client-username">Username</label>
+                    <input type="text" id="client-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="client-password">Password</label>
+                    <input type="password" id="client-password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+                <p class="login-help"><a href="#">Forgot Password?</a></p>
+            </form>
+        </div>
+    </div>
+
     <header>
         <div class="header-container">
             <div class="logo">
