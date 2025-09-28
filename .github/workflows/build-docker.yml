@@ -2,9 +2,11 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - '**'
   pull_request:
-    branches: [ main ]
+    branches: 
+      - '**'
 
 jobs:
   build:
@@ -29,6 +31,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
+        platforms: linux/amd64,linux/arm64
         tags: |
           ${{ secrets.DOCKERHUB_USERNAME }}/durianlab-consulting:latest
           ${{ secrets.DOCKERHUB_USERNAME }}/durianlab-consulting:${{ github.sha }}
