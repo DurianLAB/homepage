@@ -102,7 +102,7 @@ nav a:hover {
 
 /* Hero Section */
 #hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1500x500/3D5A27/FFFFFF?text=DurianLAB+Hero+Image') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--background-dark);
     height: 500px;
     display: flex;
     align-items: center;
@@ -169,12 +169,18 @@ h2 {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-.service-card img {
+.service-card i {
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+    background-color: var(--background-dark);
+    border-radius: 50%;
+    padding: 1rem;
+    border: 3px solid var(--primary-green);
     width: 100px;
     height: 100px;
-    border-radius: 50%; /* Circular images */
-    margin-bottom: 1.5rem;
-    border: 3px solid var(--primary-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .service-card h3 {
@@ -470,13 +476,17 @@ footer {
     max-width: 150px;
 }
 
-.icon-item img {
-    width: 60px;
-    height: 60px;
+.icon-item i {
+    color: var(--primary-green);
     margin-bottom: 0.8rem;
     border-radius: 50%;
     background-color: var(--dark-green);
-    padding: 8px;
+    padding: 1rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-item p {
