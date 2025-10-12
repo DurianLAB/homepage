@@ -16,15 +16,18 @@ service:
   port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations: {}
   hosts:
-    - host: chart-example.local
+    - host: anpham.me
       paths:
         - path: /
-          pathType: ImplementationSpecific
-  tls: []
+          pathType: Prefix
+  tls:
+    - hosts:
+        - anpham.me
+      secretName: anpham-me-tls
 
 resources: {}
   # limits:
@@ -46,3 +49,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# Cert-Manager integration (set issuerName to enable TLS provisioning)
+certManager:
+  issuerName: ""
