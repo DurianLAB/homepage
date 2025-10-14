@@ -578,6 +578,16 @@ address {
     letter-spacing: 0.5px;
 }
 
+.powered-by {
+    margin-top: 1rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.powered-by p {
+    margin: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 900px) {
     .hero-content h1 {
