@@ -550,6 +550,34 @@ address {
 }
 
 
+.version-badge {
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--dark-green);
+    color: var(--white);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+.version-badge p {
+    margin: 0;
+    color: var(--white);
+}
+
+.docker-version-badge {
+    margin-top: 1rem;
+    padding: 0.3rem 0.8rem;
+    background-color: var(--primary-green);
+    color: var(--white);
+    border-radius: 3px;
+    font-size: 0.8rem;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 /* Responsive Design */
 @media (max-width: 900px) {
     .hero-content h1 {
