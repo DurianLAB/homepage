@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSimulatedCloudCosts();
 
     // Update every 10 seconds (adjust as needed)
-    setInterval(updateSimulatedCloudCosts, 20000);
+    setInterval(() => updateSimulatedCloudCosts(), 20000);
 
     // Contact Form Submission (existing logic)
     const contactForm = document.getElementById('contact-form');
