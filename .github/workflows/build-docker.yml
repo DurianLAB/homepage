@@ -33,4 +33,5 @@ jobs:
         platforms: linux/amd64,linux/arm64
         tags: |
           ${{ secrets.DOCKERHUB_USERNAME }}/durianlab-consulting:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/durianlab-consulting:${{ github.run_number }}
           ${{ secrets.DOCKERHUB_USERNAME }}/durianlab-consulting:${{ github.sha }}

@@ -5,7 +5,7 @@ replicaCount: 1
 image:
   repository: phamduchongan93/durianlab-consulting
   pullPolicy: IfNotPresent
-  tag: "latest"
+  tag: "v1.2"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -17,7 +17,7 @@ service:
 
 ingress:
   enabled: true
-  className: ""
+  className: "nginx"
   annotations: {}
   hosts:
     - host: anpham.me
