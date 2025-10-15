@@ -39,9 +39,19 @@ Then open your browser to `http://localhost:8000`
 
 ### Deployment with Helm
 
+To deploy the application using Helm, you can use the following command:
+
 ```bash
 helm install durianlab-frontend ./helm-chart
 ```
+
+To deploy a specific Docker image tag (e.g., from a `dev` branch build), you can override the `image.tag` value:
+
+```bash
+helm upgrade --install durianlab-frontend ./helm-chart --set image.tag=dev
+```
+
+This allows you to easily switch between different versions or environments.
 
 ### Deployment with Skaffold
 
