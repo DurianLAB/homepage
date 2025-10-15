@@ -20,14 +20,14 @@ ingress:
   className: "nginx"
   annotations: {}
   hosts:
-    - host: anpham.me
+    - host: durianlab.tech
       paths:
         - path: /
           pathType: Prefix
   tls:
     - hosts:
-        - anpham.me
-      secretName: anpham-me-tls
+        - durianlab.tech
+      secretName: durianlab.tech-tls
 
 resources: {}
   # limits:
@@ -52,4 +52,4 @@ affinity: {}
 
 # Cert-Manager integration (set issuerName to enable TLS provisioning)
 certManager:
-  issuerName: ""
+  issuerName: "letsencrypt-prod"

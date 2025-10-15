@@ -5,7 +5,7 @@ metadata:
   name: {{ include "durianlab-frontend.fullname" . }}-tls
   namespace: {{ .Release.Namespace }}
 spec:
-  secretName: anpham-me-tls
+  secretName: durianlab.tech-tls
   dnsNames:
 {{- range .Values.ingress.hosts }}
   - {{ .host }}
