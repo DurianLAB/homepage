@@ -43,6 +43,21 @@ Then open your browser to `http://localhost:8000`
 helm install durianlab-frontend ./helm-chart
 ```
 
+### Deployment with Skaffold
+
+Skaffold automates the development workflow for Kubernetes applications. It builds, pushes, and deploys your application to Kubernetes.
+
+```bash
+skaffold dev
+```
+
+This command will:
+1. Build the Docker image `durianlab/frontend`.
+2. Deploy the application to your Kubernetes cluster using the Helm chart in `./helm-chart`.
+3. Watch for changes in your local files and automatically rebuild and redeploy.
+
+For a one-time build and deploy, use `skaffold run`.
+
 ## Built With
 
 - [Nginx](https://nginx.org/) - Web server
