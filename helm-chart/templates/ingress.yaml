@@ -25,7 +25,7 @@ spec:
       - path: {{ .path }}
         pathType: {{ .pathType }}
         backend:
-           service:
+          service:
             name: {{ include "durianlab-frontend.fullname" $ }}
             port:
               number: {{ $.Values.service.port }}
