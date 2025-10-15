@@ -5,7 +5,7 @@ replicaCount: 1
 image:
   repository: phamduchongan93/durianlab-consulting
   pullPolicy: IfNotPresent
-  tag: "v1.2"
+  tag: "main"
 
 imagePullSecrets: []
 nameOverride: ""
