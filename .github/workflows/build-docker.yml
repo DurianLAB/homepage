@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - '**'
+    tags:
+      - 'v*'
   pull_request:
     branches:
       - '**'
@@ -23,7 +25,19 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    
+          
+    # ➡️ NEW STEP 1: Generate Docker metadata (tags and labels)
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ secrets.DOCKERHUB_USERNAME }}/durianlab-consulting
+        tags: |
+          type=ref,event=branch
+          type=semver,pattern={{version}}
+          type=sha,format=short
+
+    # ➡️ REVISED STEP 2: Build and push, using the generated tags
     - name: Build and push
       uses: docker/build-push-action@v5
       with:
@@ -31,7 +45,6 @@ jobs:
         file: ./Dockerfile
         push: true
         platforms: linux/amd64,linux/arm64
-        tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/durianlab-consulting:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/durianlab-consulting:${{ github.run_number }}
-          ${{ secrets.DOCKERHUB_USERNAME }}/durianlab-consulting:${{ github.sha }}
+        # Use the output from the metadata step
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
