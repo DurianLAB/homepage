@@ -3,7 +3,7 @@
 # DurianLAB Consulting
 
 [![Build Status](https://github.com/DurianLAB/homepage/actions/workflows/build-docker.yml/badge.svg)](https://github.com/DurianLAB/homepage/actions/workflows/build-docker.yml)
-[![Docker Pulls](https://img.shields.io/docker/pulls/phamduchongan93/homepage?logo=docker&logoColor=white)](https://hub.docker.com/r/phamduchongan93/homepage)
+[![Docker Pulls](https://img.shields.io/docker/pulls/phamduchongan93/durianlab-consulting.svg)](https://hub.docker.com/r/phamduchongan93/durianlab-consulting)
 [![Helm Chart](https://img.shields.io/badge/Helm-Chart%20Available-blue?logo=helm&logoColor=white)](./helm-chart)
 
 This repository contains the frontend for DurianLAB Consulting website.
