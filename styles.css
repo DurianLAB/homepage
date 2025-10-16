@@ -496,6 +496,21 @@ footer {
     flex-wrap: wrap;
 }
 
+.social-media {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.social-media a {
+    color: var(--white);
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: var(--primary-green);
+}
+
 .icon-item {
     display: flex;
     flex-direction: column;
