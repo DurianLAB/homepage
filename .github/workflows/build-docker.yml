@@ -36,6 +36,9 @@ jobs:
           type=ref,event=branch
           type=semver,pattern={{version}}
           type=sha,format=short
+    - name: Set DOCKER_IMAGE_VERSION
+      id: set_version
+      run: echo "DOCKER_IMAGE_VERSION=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
 
     # ➡️ REVISED STEP 2: Build and push, using the generated tags
     - name: Build and push
@@ -48,3 +51,5 @@ jobs:
         # Use the output from the metadata step
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
+        build-args: |
+          DOCKER_IMAGE_VERSION=${{ steps.set_version.outputs.DOCKER_IMAGE_VERSION }}
