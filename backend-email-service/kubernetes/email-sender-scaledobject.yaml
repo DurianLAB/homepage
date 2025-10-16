@@ -1,0 +1,24 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: email-sender-scaler
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: email-sender-deployment
+  pollingInterval: 5 # Check queue every 5 seconds
+  cooldownPeriod: 30 # Scale down after 30 seconds of inactivity
+  minReplicaCount: 0 # Scale down to 0 when no messages
+  maxReplicaCount: 5 # Max 5 replicas
+  triggers:
+  - type: rabbitmq
+    metadata:
+      host: rabbitmq.default.svc.cluster.local:5672 # Your RabbitMQ service
+      queueName: email_queue
+      queueLength: "5" # Scale up if queue has more than 5 messages
+      # You'll need to provide authentication details for RabbitMQ if it's secured
+      # e.g., use a secret for username/password
+      # usernameFromEnv: RABBITMQ_USERNAME
+      # passwordFromEnv: RABBITMQ_PASSWORD

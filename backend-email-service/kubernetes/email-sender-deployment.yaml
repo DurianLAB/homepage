@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-sender-deployment
+  labels:
+    app: email-sender
+spec:
+  replicas: 0 # KEDA will manage this
+  selector:
+    matchLabels:
+      app: email-sender
+  template:
+    metadata:
+      labels:
+        app: email-sender
+    spec:
+      containers:
+      - name: email-sender
+        image: your-docker-repo/email-sender:latest # Replace with your image
+        env:
+        - name: RABBITMQ_HOST
+          value: "rabbitmq.default.svc.cluster.local" # Or your RabbitMQ service name
+        - name: RABBITMQ_QUEUE
+          value: "email_queue"
+        - name: SENDER_EMAIL
+          value: "your_verified_sender@example.com" # Your verified SendGrid sender
+        - name: SENDGRID_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: sendgrid-api-key # Kubernetes Secret for SendGrid API Key
+              key: api-key
