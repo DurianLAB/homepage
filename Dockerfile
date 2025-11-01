@@ -1,5 +1,5 @@
 # Build stage
-FROM node:16-alpine as build
+FROM node:18-alpine AS build
 
 # Set working directory
 WORKDIR /app
@@ -26,7 +26,7 @@ COPY --from=build /app/build /usr/share/nginx/html
 # COPY nginx.conf /etc/nginx/nginx.conf
 
 # Replace version placeholder
-ARG DOCKER_IMAGE_VERSION
+ARG DOCKER_IMAGE_VERSION=latest
 RUN sed -i "s/DOCKER_IMAGE_VERSION/${DOCKER_IMAGE_VERSION}/g" /usr/share/nginx/html/index.html
 
 # Expose port 80
