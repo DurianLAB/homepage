@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Production stage
-FROM --platform=linux/amd64 nginx:alpine
+FROM  nginx:alpine
 
 # Copy built app from build stage
 COPY --from=build /app/build /usr/share/nginx/html
