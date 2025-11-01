@@ -1,13 +1,33 @@
-# Use nginx as the base image
-FROM nginx:alpine
+# Build stage
+FROM node:16-alpine as build
 
 # Set working directory
-WORKDIR /usr/share/nginx/html
+WORKDIR /app
 
-# Copy static files
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy source code
 COPY . .
+
+# Build the app
+RUN npm run build
+
+# Production stage
+FROM nginx:alpine
+
+# Copy built app from build stage
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Copy nginx configuration (optional)
+# COPY nginx.conf /etc/nginx/nginx.conf
+
+# Replace version placeholder
 ARG DOCKER_IMAGE_VERSION
-RUN sed -i "s/DOCKER_IMAGE_VERSION/${DOCKER_IMAGE_VERSION}/g" index.html
+RUN sed -i "s/DOCKER_IMAGE_VERSION/${DOCKER_IMAGE_VERSION}/g" /usr/share/nginx/html/index.html
 
 # Expose port 80
 EXPOSE 80

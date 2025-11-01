@@ -1,0 +1,59 @@
+import React from 'react';
+
+const Footer = () => {
+  return (
+    <footer>
+      <div className="footer-container">
+        <div className="footer-icons">
+          <div className="icon-item">
+            <i className="fas fa-clock fa-3x"></i>
+            <p><strong>30-MINUTE QUOTE</strong><br />Fast, accurate quote turnaround</p>
+          </div>
+          <div className="icon-item">
+            <i className="fas fa-handshake fa-3x"></i>
+            <p><strong>PARTNER WITH US</strong><br />Join our dynamic partner ecosystem</p>
+          </div>
+          <div className="icon-item">
+            <i className="fas fa-envelope fa-3x"></i>
+            <p><strong>eNEWS SIGN UP</strong><br />Get the latest news, events and updates</p>
+          </div>
+          <div className="icon-item">
+            <i className="fas fa-calendar fa-3x"></i>
+            <p><strong>PLAN AN EVENT</strong><br />Learn about the Conference & Collaboration Center</p>
+          </div>
+        </div>
+
+        <div className="version-badge">
+          <p className="docker-version-badge">Docker Version: DOCKER_IMAGE_VERSION</p>
+        </div>
+        <div className="footer-details">
+          <div className="quick-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#services">SOLUTIONS</a></li>
+              <li><a href="#projects">RESOURCES</a></li>
+              <li><a href="#pricing">CONTRACTS</a></li>
+              <li><a href="#contact">ABOUT</a></li>
+              <li><a href="assets/License_34_redacted.pdf" target="_blank" rel="noopener noreferrer">LICENSES</a></li>
+            </ul>
+          </div>
+
+          <div className="contact-info">
+            <h3>Contact Info</h3>
+            <address>
+              SUITE 100<br />
+              POMONA, CALIFORNIA 20190
+            </address>
+            <p>admin@durianlab.tech</p>
+            <p>PHONE: 909 632 5296</p>
+          </div>
+        </div>
+        <div className="powered-by">
+          <p>Powered by DurianLAB</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
