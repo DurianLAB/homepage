@@ -27,7 +27,7 @@ COPY --from=build /app/build /usr/share/nginx/html
 
 # Replace version placeholder
 ARG DOCKER_IMAGE_VERSION=latest
-RUN sed -i "s/DOCKER_IMAGE_VERSION/${DOCKER_IMAGE_VERSION}/g" /usr/share/nginx/html/index.html
+RUN sed -i "s|DOCKER_IMAGE_VERSION|${DOCKER_IMAGE_VERSION}|g" /usr/share/nginx/html/index.html
 
 # Expose port 80
 EXPOSE 80
