@@ -1,0 +1,10 @@
+.git
+.github
+helm-chart
+argocd
+venv
+node_modules
+build
+*.md
+Makefile
+*.jpg

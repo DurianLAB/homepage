@@ -17,17 +17,13 @@ COPY . .
 RUN npm run build
 
 # Production stage
-FROM nginx:alpine
+FROM --platform=linux/amd64 nginx:alpine
 
 # Copy built app from build stage
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Copy nginx configuration (optional)
 # COPY nginx.conf /etc/nginx/nginx.conf
-
-# Replace version placeholder
-ARG DOCKER_IMAGE_VERSION=latest
-RUN sed -i "s|DOCKER_IMAGE_VERSION|${DOCKER_IMAGE_VERSION}|g" /usr/share/nginx/html/index.html
 
 # Expose port 80
 EXPOSE 80
