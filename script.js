@@ -58,4 +58,28 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.reset();
         });
     }
+
+    // Back to Top button functionality
+    const backToTopButton = document.getElementById('back-to-top');
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+                backToTopButton.style.opacity = '1';
+            } else {
+                backToTopButton.style.opacity = '0';
+                setTimeout(() => {
+                    backToTopButton.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        backToTopButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });
