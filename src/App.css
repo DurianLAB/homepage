@@ -140,7 +140,7 @@ nav a:hover {
     color: var(--white);
 }
 
-.hero-content .h1 {
+.hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     color: var(--white); /* White for hero title */
@@ -618,22 +618,9 @@ address {
     margin: 0;
 }
 
-.back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background-color: var(--primary-green);
-    color: var(--white);
-    padding: 1rem;
-    border-radius: 50%;
-    text-align: center;
-    z-index: 1000;
-    transition: opacity 0.3s ease-in-out;
-}
-
 /* Responsive Design */
 @media (max-width: 900px) {
-    .hero-content .h1 {
+    .hero-content h1 {
         font-size: 2.8rem;
     }
     .hero-content p {
@@ -685,7 +672,7 @@ address {
     .carousel-indicators {
         bottom: 15px;
     }
-    .hero-content .h1 {
+    .hero-content h1 {
         font-size: 2.2rem;
     }
     .hero-content p {

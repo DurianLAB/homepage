@@ -1,7 +1,7 @@
 # AGENTS.md
 
 ## Build/Lint/Test Commands
-- No build commands needed (static site)
+- Build command: `npm run build` (React app)
 - No linting configured
 - No tests configured
 - To add tests later: `npm test -- --testNamePattern="test-name"`

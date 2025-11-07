@@ -14,9 +14,79 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- Docker
+- Node.js (v16 or higher)
+- npm or yarn
+- Docker (for containerized deployment)
 - Kubernetes (for deployment)
 - Helm (for deployment)
+
+### Development with React
+
+#### Quick Start with Makefile
+
+```bash
+# Show all available commands
+make help
+
+# Initial setup (install + build)
+make setup
+
+# Start development server
+make start
+
+# Run full development workflow (install, lint, test, start)
+make dev-full
+
+# Run all checks (lint, test, build)
+make check
+```
+
+#### Manual Commands
+
+1. Install dependencies:
+```bash
+npm install
+# or
+make install
+```
+
+2. Start the development server:
+```bash
+npm start
+# or
+make start
+```
+
+3. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+4. Build for production:
+```bash
+npm run build
+# or
+make build
+```
+
+#### Available Makefile Targets
+
+| Target | Description |
+|--------|-------------|
+| `make help` | Show all available targets |
+| `make install` | Install npm dependencies |
+| `make start` | Start development server |
+| `make build` | Build for production |
+| `make test` | Run tests |
+| `make lint` | Run ESLint |
+| `make clean` | Clean build artifacts |
+| `make setup` | Initial setup (install + build) |
+| `make dev` | Start development environment |
+| `make check` | Run all checks (lint, test, build) |
+| `make ci` | Simulate CI pipeline |
+| `make docker-build` | Build Docker image |
+| `make docker-run` | Run Docker container |
+
+**Short aliases:** `make i` (install), `make s` (start), `make b` (build), `make t` (test), `make c` (clean)
+
+### Building the Docker Image
 
 ### Building the Docker Image
 
@@ -70,7 +140,8 @@ For a one-time build and deploy, use `skaffold run`.
 
 ## Built With
 
-- [Nginx](https://nginx.org/) - Web server
+- [React](https://reactjs.org/) - Frontend framework
+- [Nginx](https://nginx.org/) - Web server (for production builds)
 - [Docker](https://www.docker.com/) - Containerization
 - [Kubernetes](https://kubernetes.io/) - Container orchestration
 - [Helm](https://helm.sh/) - Kubernetes package manager
