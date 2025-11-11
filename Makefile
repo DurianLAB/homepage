@@ -1,7 +1,7 @@
 # Makefile for DurianLAB Homepage React Application
 # Automates common development and testing tasks
 
-.PHONY: help install start build test clean docker-build docker-run docker-clean lint format
+.PHONY: help install start build test clean docker-build docker-run docker-clean lint format audit
 
 # Default target
 help: ## Show this help message
@@ -29,6 +29,10 @@ test: ## Run tests
 test-watch: ## Run tests in watch mode
 	@echo "Running tests in watch mode..."
 	npm test
+
+audit: ## Run npm audit
+	@echo "Running npm audit..."
+	npm audit
 
 lint: ## Run ESLint (if configured)
 	@echo "Running ESLint..."

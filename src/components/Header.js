@@ -10,14 +10,15 @@ const Header = () => {
           </a>
         </div>
         <nav>
-          <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://anpham.me/jenkins" target="_blank" rel="noopener noreferrer">Test Lab</a></li>
-          </ul>
-        </nav>
+           <ul>
+             <li><a href="#services">Services</a></li>
+             <li><a href="#pricing">Pricing</a></li>
+             <li><a href="#projects">Projects</a></li>
+             <li><a href="#contact">Contact</a></li>
+             <li><a href="https://anpham.me/jenkins" target="_blank" rel="noopener noreferrer">Test Lab</a></li>
+             <li><a href="https://github.com/DurianLAB/homepage" target="_blank" rel="noopener noreferrer"><i className="fab fa-github" style={{fontSize: '168%'}} title="GitHub repository"></i></a></li>
+           </ul>
+         </nav>
       </div>
     </header>
   );
