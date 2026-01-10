@@ -24,27 +24,11 @@ RUN sed -i "s/DOCKER_IMAGE_VERSION/$VERSION/g" build/index.html
 # Production stage
 FROM nginx:alpine
 
-# Install Node.js
-RUN apk add --no-cache nodejs npm
-
 # Copy built app from build stage
 COPY --from=build /app/build /usr/share/nginx/html
-
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Copy backend files
-COPY server.js package*.json ./
-
-# Install backend dependencies
-RUN npm install --production
-
-# Copy start script
-COPY start.sh ./
-RUN chmod +x start.sh
 
 # Expose port 80
 EXPOSE 80
 
-# Start both nginx and Node.js server
-CMD ["./start.sh"]
+# Start nginx server
+CMD ["nginx", "-g", "daemon off;"]
