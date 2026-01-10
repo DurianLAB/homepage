@@ -15,7 +15,7 @@ const Header = () => {
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="https://anpham.me/jenkins" target="_blank" rel="noopener noreferrer">Test Lab</a></li>
+            <li><a href="https://jenkins.durianlab.tech" target="_blank" rel="noopener noreferrer">Test Lab</a></li>
           </ul>
         </nav>
       </div>
