@@ -1,7 +1,11 @@
 # Makefile for DurianLAB Homepage React Application
 # Automates common development and testing tasks
 
-.PHONY: help install start build test clean docker-build docker-run docker-clean lint format
+.PHONY: help install start build test clean docker-build docker-tag docker-push docker-run docker-clean lint format audit
+
+# Docker repository configuration
+DOCKER_REPO ?= phamduchongan93/durianlab-consulting
+VERSION = 1.4.1
 
 # Default target
 help: ## Show this help message
@@ -30,6 +34,10 @@ test-watch: ## Run tests in watch mode
 	@echo "Running tests in watch mode..."
 	npm test
 
+audit: ## Run npm audit
+	@echo "Running npm audit..."
+	npm audit
+
 lint: ## Run ESLint (if configured)
 	@echo "Running ESLint..."
 	npx eslint src --ext .js,.jsx,.ts,.tsx
@@ -48,17 +56,31 @@ clean-build: ## Clean only build artifacts
 
 docker-build: ## Build Docker image
 	@echo "Building Docker image..."
-	docker build -t durianlab-homepage .
+	docker build --no-cache --build-arg VERSION=$(VERSION) -t durianlab-homepage .
+
+docker-tag: ## Tag Docker image for Docker Hub
+	@echo "Tagging Docker image for $(DOCKER_REPO)..."
+	docker tag durianlab-homepage $(DOCKER_REPO):$(VERSION)
+
+docker-push: ## Push Docker image to Docker Hub
+	@echo "Pushing Docker image to Docker Hub..."
+	docker push $(DOCKER_REPO):$(VERSION)
 
 docker-run: ## Run Docker container
 	@echo "Running Docker container..."
 	docker run -p 8080:80 durianlab-homepage
 
+docker-deploy: ## Build, tag, and push Docker image to Docker Hub
+	@echo "Building, tagging, and pushing Docker image..."
+	$(MAKE) docker-build
+	$(MAKE) docker-tag
+	$(MAKE) docker-push
+
 docker-clean: ## Remove Docker images and containers
 	@echo "Cleaning Docker images and containers..."
 	docker stop $$(docker ps -q --filter ancestor=durianlab-homepage) 2>/dev/null || true
 	docker rm $$(docker ps -a -q --filter ancestor=durianlab-homepage) 2>/dev/null || true
-	docker rmi durianlab-homepage 2>/dev/null || true
+	docker rmi durianlab-homepage $(DOCKER_REPO):$(VERSION) 2>/dev/null || true
 
 setup: ## Initial setup - install dependencies and build
 	@echo "Setting up the project..."
