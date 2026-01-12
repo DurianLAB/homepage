@@ -103,9 +103,10 @@ docker run -p 8080:80 durianlab/frontend
 ### Quickly Test with Python HTTP Module
 
 ```bash
+cd build  # Navigate to the build directory
 python3 -m http.server 8000
 ```
-Then open your browser to `http://localhost:8000`
+Then open your browser to `http://localhost:8000` at the correct folder.
 
 ### Deployment with Helm
 
