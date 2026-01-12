@@ -4,7 +4,7 @@
 .PHONY: help install start build test clean docker-build docker-tag docker-push docker-run docker-clean lint format audit
 
 # Docker repository configuration
-DOCKER_REPO ?= phamduchongan93/durianlab-consulting
+DOCKER_REPO ?= anpham/durianlab-homepage
 VERSION = 1.4.1
 
 # Default target
