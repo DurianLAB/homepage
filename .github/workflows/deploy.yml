@@ -1,0 +1,105 @@
+name: Deploy to Akash Network
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  workflow_run:
+    workflows: ["Build and Push Docker Image"]
+    types:
+      - completed
+
+jobs:
+  canary-deploy:
+    if: github.event.workflow_run.conclusion == 'success' || github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Akash CLI
+      uses: akash-network/akash-cli-action@v1
+      with:
+        version: latest
+
+    - name: Authenticate with Akash
+      run: |
+        echo "${{ secrets.AKASH_KEY }}" | akash keys add deploy-key --recover
+        akash keys list
+
+    # Stage 1: Deploy to Staging Provider
+    - name: Deploy to Staging Provider
+      run: |
+        export AKASH_NET="https://api.akashnet.net"
+        export AKASH_CHAIN_ID="akashnet-2"
+        export AKASH_ACCOUNT_ADDRESS="${{ secrets.AKASH_ACCOUNT_ADDRESS }}"
+        export AKASH_DSEQ="${{ secrets.STAGING_DSEQ }}"
+        export AKASH_PROVIDER="${{ secrets.STAGING_PROVIDER }}"
+
+        # Update SDL with staging environment variables
+        envsubst < data/templates/staging-deployment.sdl.yml > deployment.sdl.yml
+
+        # Deploy to staging
+        akash tx deployment create deployment.sdl.yml --from deploy-key --gas auto --gas-adjustment 1.5 -y
+        akash tx deployment deposit ${{ secrets.STAGING_DEPOSIT }} --dseq $AKASH_DSEQ --from deploy-key -y
+
+    - name: Wait for staging deployment
+      run: |
+        sleep 60  # Wait for deployment to be ready
+
+    - name: Run Lighthouse Performance Check
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        urls: ${{ secrets.STAGING_URL }}
+        configPath: .lighthouserc.json
+        uploadArtifacts: true
+        temporaryPublicStorage: true
+
+    - name: Check Performance Score
+      run: |
+        SCORE=$(cat lighthouseci-results.json | jq -r '.[] | select(.url == "${{ secrets.STAGING_URL }}") | .summary.performance')
+        if (( $(echo "$SCORE < 90" | bc -l) )); then
+          echo "Performance score $SCORE is below 90, failing deployment"
+          exit 1
+        fi
+
+  production-deploy:
+    needs: canary-deploy
+    if: success()
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Akash CLI
+      uses: akash-network/akash-cli-action@v1
+      with:
+        version: latest
+
+    - name: Authenticate with Akash
+      run: |
+        echo "${{ secrets.AKASH_KEY }}" | akash keys add deploy-key --recover
+
+    # Stage 2: Deploy to Production Provider
+    - name: Deploy to Production Provider
+      run: |
+        export AKASH_NET="https://api.akashnet.net"
+        export AKASH_CHAIN_ID="akashnet-2"
+        export AKASH_ACCOUNT_ADDRESS="${{ secrets.AKASH_ACCOUNT_ADDRESS }}"
+        export AKASH_DSEQ="${{ secrets.PRODUCTION_DSEQ }}"
+        export AKASH_PROVIDER="${{ secrets.PRODUCTION_PROVIDER }}"
+
+        # Update SDL with production environment variables
+        envsubst < data/templates/production-deployment.sdl.yml > deployment.sdl.yml
+
+        # Deploy to production
+        akash tx deployment create deployment.sdl.yml --from deploy-key --gas auto --gas-adjustment 1.5 -y
+        akash tx deployment deposit ${{ secrets.PRODUCTION_DEPOSIT }} --dseq $AKASH_DSEQ --from deploy-key -y
+
+    - name: Update DNS (Optional)
+      run: |
+        # Update DNS records to point to new deployment if needed
+        echo "Deployment successful. Update DNS to point to new Akash deployment."

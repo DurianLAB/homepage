@@ -5,18 +5,34 @@
 
 # Docker repository configuration
 DOCKER_REPO ?= phamduchongan93/durianlab-consulting
-VERSION = 1.4.1
+VERSION = $(shell node -p "require('./package.json').version")
 
 # Default target
 help: ## Show this help message
 	@echo "DurianLAB Homepage - React Application Makefile"
 	@echo ""
 	@echo "Available targets:"
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-15s %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-20s %s\n", $$1, $$2}'
+	@echo ""
+	@echo "Quick aliases: i=install, s=start, b=build, t=test, c=clean"
 
 install: ## Install npm dependencies
 	@echo "Installing npm dependencies..."
-	npm install
+	@if [ -f package-lock.json ]; then \
+		echo "Found package-lock.json, using npm ci for reliable install..."; \
+		NODE_OPTIONS="--max-old-space-size=4096" npm ci --legacy-peer-deps || { \
+			echo "npm ci failed, clearing cache and retrying..."; \
+			npm cache clean --force; \
+			NODE_OPTIONS="--max-old-space-size=4096" npm ci --legacy-peer-deps; \
+		}; \
+	else \
+		echo "No package-lock.json found, using npm install..."; \
+		NODE_OPTIONS="--max-old-space-size=4096" npm install --legacy-peer-deps || { \
+			echo "npm install failed, clearing cache and retrying..."; \
+			npm cache clean --force; \
+			NODE_OPTIONS="--max-old-space-size=4096" npm install --legacy-peer-deps; \
+		}; \
+	fi
 
 start: ## Start the development server
 	@echo "Starting React development server..."
@@ -48,7 +64,18 @@ format: ## Format code with Prettier (if configured)
 
 clean: ## Clean build artifacts and node_modules
 	@echo "Cleaning build artifacts and dependencies..."
-	rm -rf build node_modules package-lock.json
+	rm -rf build
+
+clean-deps: ## Clean node_modules and package locks
+	@echo "Cleaning dependencies..."
+	rm -rf node_modules package-lock.json
+	@echo "Clearing npm cache..."
+	npm cache clean --force
+
+clean-all: ## Clean everything including npm cache
+	@echo "Cleaning all artifacts and cache..."
+	rm -rf build node_modules package-lock.json .npm
+	npm cache clean --force
 
 clean-build: ## Clean only build artifacts
 	@echo "Cleaning build artifacts..."
@@ -92,6 +119,12 @@ dev: ## Start development environment
 	$(MAKE) install
 	$(MAKE) start
 
+dev-clean: ## Start development environment with fresh install
+	@echo "Starting development environment with clean install..."
+	$(MAKE) clean-deps
+	$(MAKE) install
+	$(MAKE) start
+
 deploy: ## Build and deploy (for production)
 	@echo "Building for production deployment..."
 	$(MAKE) build
@@ -120,9 +153,34 @@ ci: ## Simulate CI pipeline (install, lint, test, build)
 	$(MAKE) build
 	@echo "CI pipeline completed successfully!"
 
+# NPM troubleshooting targets
+npm-fix: ## Fix common npm issues
+	@echo "Fixing npm issues..."
+	$(MAKE) clean-deps
+	@echo "Setting npm configurations..."
+	npm config set fund false
+	npm config set audit false
+	npm config set legacy-peer-deps true
+	$(MAKE) install
+
+npm-doctor: ## Run npm doctor to diagnose issues
+	@echo "Running npm doctor..."
+	npm doctor
+
+npm-reset: ## Complete npm reset (dangerous, use as last resort)
+	@echo "Performing complete npm reset..."
+	$(MAKE) clean-all
+	@echo "Removing npm config..."
+	rm -rf ~/.npm ~/.npmrc
+	@echo "Please reinstall Node.js/npm if issues persist"
+
 # Quick development targets
 i: install ## Alias for install
 s: start ## Alias for start
 b: build ## Alias for build
 t: test ## Alias for test
 c: clean ## Alias for clean
+cd: clean-deps ## Alias for clean-deps
+cf: clean-all ## Alias for clean-all
+dc: dev-clean ## Alias for dev-clean
+nf: npm-fix ## Alias for npm-fix

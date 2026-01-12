@@ -1,0 +1,60 @@
+---
+version: "2.0"
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    expose:
+      - port: 80
+        as: 80
+        to:
+          - global: true
+      - port: 443
+        as: 443
+        to:
+          - global: true
+      - port: 22
+        as: 22
+        to:
+          - global: true
+    env:
+      - GITLAB_OMNIBUS_CONFIG=external_url 'http://__GITLAB_EXTERNAL_URL__'; gitlab_rails['initial_root_password']=File.read('/etc/gitlab/initial_root_password')
+    params:
+      storage:
+        gitlab-data:
+          mount: /var/opt/gitlab
+          readOnly: false
+        gitlab-logs:
+          mount: /var/log/gitlab
+          readOnly: false
+        gitlab-config:
+          mount: /etc/gitlab
+          readOnly: false
+
+profiles:
+  compute:
+    gitlab:
+      resources:
+        cpu:
+          units: 4.0
+        memory:
+          size: 8Gi
+        storage:
+          size: 100Gi
+  placement:
+    akash:
+      attributes:
+        region: us-west
+      signedBy:
+        anyOf:
+          - "akash1vz375dkt0c60annyp6mkzeejfq7v4nc9xu0q3p2"
+      pricing:
+        gitlab:
+          denom: uakt
+          amount: 20000
+
+deployment:
+  gitlab:
+    akash:
+      profile: gitlab
+      count: 1

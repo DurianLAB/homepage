@@ -15,11 +15,11 @@ RUN npm ci || npm install --no-audit --no-fund
 # Copy source code
 COPY . .
 
+# Set version env for React
+ENV REACT_APP_VERSION=$VERSION
+
 # Build the app
 RUN npm run build
-
-# Replace version placeholder
-RUN sed -i "s/DOCKER_IMAGE_VERSION/$VERSION/g" build/index.html
 
 # Production stage
 FROM nginx:alpine
