@@ -1,0 +1,49 @@
+---
+version: "2.0"
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    expose:
+      - port: 8080
+        as: 80
+        to:
+          - global: true
+      - port: 50000
+        to:
+          - global: true
+    env:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    params:
+      storage:
+        jenkins-data:
+          mount: /var/jenkins_home
+          readOnly: false
+
+profiles:
+  compute:
+    jenkins:
+      resources:
+        cpu:
+          units: 2.0
+        memory:
+          size: 4Gi
+        storage:
+          size: 50Gi
+  placement:
+    akash:
+      attributes:
+        region: us-west
+      signedBy:
+        anyOf:
+          - "akash1vz375dkt0c60annyp6mkzeejfq7v4nc9xu0q3p2"
+      pricing:
+        jenkins:
+          denom: uakt
+          amount: 10000
+
+deployment:
+  jenkins:
+    akash:
+      profile: jenkins
+      count: 1

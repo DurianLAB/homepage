@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 
 // Components
@@ -10,34 +10,11 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
+// Hooks
+import { useSavingsCalculator } from './hooks/useSavingsCalculator';
+
 function App() {
-  const [cloudCost, setCloudCost] = useState(0.00);
-
-  useEffect(() => {
-    // Cloud cost simulation logic
-    const cloudServices = [
-      { name: 'Compute', cost: 1200.50, min: 1000, max: 1500 },
-      { name: 'Storage', cost: 300.25, min: 250, max: 400 },
-      { name: 'Network', cost: 150.70, min: 100, max: 200 },
-      { name: 'Database', cost: 750.00, min: 600, max: 900 },
-      { name: 'Monitoring', cost: 80.10, min: 70, max: 120 }
-    ];
-
-    const updateSimulatedCloudCosts = () => {
-      let totalCost = 0;
-      cloudServices.forEach(service => {
-        const fluctuation = (Math.random() - 0.5) * 20;
-        service.cost = Math.max(service.min, Math.min(service.max, service.cost + fluctuation));
-        service.cost = parseFloat(service.cost.toFixed(2));
-        totalCost += service.cost;
-      });
-      setCloudCost(totalCost.toFixed(2));
-    };
-
-    updateSimulatedCloudCosts();
-    const interval = setInterval(updateSimulatedCloudCosts, 20000);
-    return () => clearInterval(interval);
-  }, []);
+  const { cloudCost } = useSavingsCalculator();
 
   const handleContactSubmit = async (event) => {
     event.preventDefault();
