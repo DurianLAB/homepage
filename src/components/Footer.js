@@ -11,12 +11,12 @@ const Footer = () => {
           </div>
           <div className="icon-item">
             <i className="fas fa-handshake fa-3x"></i>
-            <p><strong>PARTNER WITH US</strong><br />Join our dynamic partner ecosystem</p>
+            <p><strong>PARTNER WITH US</strong><br />Join us as vendor</p>
           </div>
 
           <div className="icon-item">
             <i className="fas fa-calendar fa-3x"></i>
-             <p><strong>Book appointment</strong><br />Learn about the Conference & Collaboration Center</p>
+             <p><strong>BOOK APPOINTMENT</strong><br /> For project discussion </p>
           </div>
         </div>
 
@@ -32,7 +32,7 @@ const Footer = () => {
               <li><a href="#pricing">CONTRACTS</a></li>
               <li><a href="#contact">ABOUT</a></li>
               <li><a href="assets/License_34_redacted.pdf" target="_blank" rel="noopener noreferrer">LICENSES</a></li>
-               <li><a href="https://status.durianlab.tech/status/service" target="_blank" rel="noopener noreferrer">STATUS</a></li>
+               <li><a href="https://status.durianlab.tech/status/services" target="_blank" rel="noopener noreferrer">STATUS</a></li>
             </ul>
           </div>
 
