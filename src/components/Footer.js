@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
 
         <div className="version-badge">
-          <p className="docker-version-badge">Docker Version: DOCKER_IMAGE_VERSION</p>
+          <p className="docker-version-badge">Docker Version: {process.env.REACT_APP_VERSION}</p>
         </div>
         <div className="footer-details">
           <div className="quick-links">
