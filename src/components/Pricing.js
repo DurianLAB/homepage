@@ -9,8 +9,8 @@ const Pricing = () => {
         <p className="pricing-subtitle">Transparent, value-based solutions tailored to your business needs</p>
 
         <div className="pricing-grid">
-          <div className="pricing-category">
-            <h3>Virtual Desktop Infrastructure (VDI)</h3>
+           <div className="pricing-category vdi">
+             <h3>Virtual Desktop Infrastructure (VDI)</h3>
             <p className="category-description">Secure, scalable virtual desktops for your remote workforce</p>
 
              <div className="pricing-tiers">

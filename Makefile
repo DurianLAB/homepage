@@ -5,7 +5,7 @@
 
 # Docker repository configuration
 DOCKER_REPO ?= phamduchongan93/durianlab-consulting
-VERSION = 1.4.1
+VERSION = $(shell node -p "require('./package.json').version")
 
 # Default target
 help: ## Show this help message
