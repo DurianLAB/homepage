@@ -39,8 +39,10 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleContactSubmit = (event) => {
+  const handleContactSubmit = async (event) => {
     event.preventDefault();
+    // Simulate sending
+    await new Promise(resolve => setTimeout(resolve, 1000));
     alert('Thank you for your message! We will get back to you shortly.');
     event.target.reset();
   };
