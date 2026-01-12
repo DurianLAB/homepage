@@ -33,3 +33,6 @@
 - JavaScript variables: camelCase
 - JavaScript functions: camelCase
 - Constants: UPPER_SNAKE_CASE
+
+## Git Branch Management
+- Never delete the main branch.
