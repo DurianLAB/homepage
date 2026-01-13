@@ -24,7 +24,7 @@ const Services = () => {
         </div>
 
         <div className="upcoming-services" style={{ marginTop: '4rem', padding: '3rem', backgroundColor: 'var(--background-mid)', borderRadius: '15px', boxShadow: '0 5px 15px rgba(0, 0, 0, 0.3)' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'center' }}>
+          <div className="upcoming-grid">
             <div>
               <span style={{ color: 'var(--accent-blue)', fontFamily: 'monospace', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem', display: 'block' }}>Coming Soon</span>
               <h3 style={{ fontSize: '2.5rem', color: 'var(--primary-green)', marginBottom: '1rem', fontWeight: 'bold' }}>
@@ -44,7 +44,7 @@ const Services = () => {
                 <div style={{ width: '12px', height: '12px', backgroundColor: '#ffbd2e', borderRadius: '50%' }}></div>
                 <div style={{ width: '12px', height: '12px', backgroundColor: '#28ca42', borderRadius: '50%' }}></div>
               </div>
-              <pre style={{ color: 'var(--accent-blue)', fontFamily: 'monospace', fontSize: '0.9rem', margin: 0 }}>
+               <pre className="terminal-output" style={{ color: 'var(--accent-blue)', fontFamily: 'monospace', fontSize: '0.9rem', margin: 0 }}>
 {`$ npm install business-package@latest
 Installing business-package...
 [INFO] AI Analytics Module: Installed
@@ -52,7 +52,7 @@ Installing business-package...
 [INFO] Security Suite: Activated
 [INFO] Package ready for deployment!
 `}
-              </pre>
+               </pre>
             </div>
           </div>
         </div>

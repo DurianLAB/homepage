@@ -14,7 +14,8 @@ export const useSavingsCalculator = () => {
     setServices(updatedServices);
     setCloudCost(totalCost);
     setSavings(calculateSavings(workload));
-  }, [services, workload]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [workload]); // Removed services from dependencies to prevent infinite loop
 
   useEffect(() => {
     updateCosts(); // Initial update
