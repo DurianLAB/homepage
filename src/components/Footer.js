@@ -31,7 +31,7 @@ const Footer = () => {
               <li><a href="#projects">RESOURCES</a></li>
               <li><a href="#pricing">CONTRACTS</a></li>
               <li><a href="#contact">ABOUT</a></li>
-              <li><a href="assets/License_34_redacted.pdf" target="_blank" rel="noopener noreferrer">LICENSES</a></li>
+               <li><a href="/assets/Licenses.pdf" target="_blank" rel="noopener noreferrer">LICENSES</a></li>
                <li><a href="https://status.durianlab.tech/status/services" target="_blank" rel="noopener noreferrer">STATUS</a></li>
             </ul>
           </div>
