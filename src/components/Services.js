@@ -32,8 +32,8 @@ const Services = () => {
           <h3 style={{ fontSize: '2.5rem', color: 'var(--primary-green)', marginBottom: '2rem', textAlign: 'center', fontWeight: 'bold' }}>
             Infrastructure Audit Levels
           </h3>
-          <div className="audit-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
-            <div className="audit-card" style={{ backgroundColor: 'var(--background-dark)', padding: '2rem', borderRadius: '10px', border: '2px solid var(--dark-green)', textAlign: 'center' }}>
+           <div className="audit-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
+             <div className="audit-card" style={{ backgroundColor: 'var(--background-dark)', padding: '2rem', borderRadius: '10px', border: '2px solid var(--dark-green)', textAlign: 'center', maxWidth: '300px', margin: '0 auto', minHeight: '350px' }}>
               <h4 style={{ color: 'var(--accent-blue)', marginBottom: '1rem', textTransform: 'uppercase', fontSize: '1.1rem' }}>Basic</h4>
               <p style={{ color: 'var(--text-light)', marginBottom: '1.5rem' }}>Security Scan</p>
               <ul style={{ color: 'var(--text-light)', fontSize: '0.9rem', textAlign: 'left', listStyle: 'none', padding: 0 }}>
@@ -45,7 +45,7 @@ const Services = () => {
               </ul>
               <div style={{ color: '#28ca42', fontWeight: 'bold', marginBottom: '1rem' }}>Starting $500</div>
             </div>
-            <div className="audit-card" style={{ backgroundColor: 'var(--background-dark)', padding: '2rem', borderRadius: '10px', border: '2px solid var(--primary-green)', textAlign: 'center' }}>
+             <div className="audit-card" style={{ backgroundColor: 'var(--background-dark)', padding: '2rem', borderRadius: '10px', border: '2px solid var(--primary-green)', textAlign: 'center', maxWidth: '300px', margin: '0 auto', minHeight: '350px' }}>
               <h4 style={{ color: 'var(--primary-green)', marginBottom: '1rem', textTransform: 'uppercase', fontSize: '1.1rem' }}>Comprehensive</h4>
               <p style={{ color: 'var(--text-light)', marginBottom: '1.5rem' }}>Full Infrastructure Review</p>
               <ul style={{ color: 'var(--text-light)', fontSize: '0.9rem', textAlign: 'left', listStyle: 'none', padding: 0 }}>
@@ -59,7 +59,7 @@ const Services = () => {
               </ul>
               <div style={{ color: '#ffbd2e', fontWeight: 'bold', marginBottom: '1rem' }}>Starting $2,000</div>
             </div>
-            <div className="audit-card" style={{ backgroundColor: 'var(--background-dark)', padding: '2rem', borderRadius: '10px', border: '2px solid var(--accent-blue)', textAlign: 'center' }}>
+             <div className="audit-card" style={{ backgroundColor: 'var(--background-dark)', padding: '2rem', borderRadius: '10px', border: '2px solid var(--accent-blue)', textAlign: 'center', maxWidth: '300px', margin: '0 auto', minHeight: '350px' }}>
               <h4 style={{ color: 'var(--accent-blue)', marginBottom: '1rem', textTransform: 'uppercase', fontSize: '1.1rem' }}>Enterprise</h4>
               <p style={{ color: 'var(--text-light)', marginBottom: '1.5rem' }}>Complete DevOps Assessment</p>
               <ul style={{ color: 'var(--text-light)', fontSize: '0.9rem', textAlign: 'left', listStyle: 'none', padding: 0 }}>
@@ -79,57 +79,57 @@ const Services = () => {
           <div className="tools-showcase" style={{ backgroundColor: 'var(--background-dark)', padding: '2rem', borderRadius: '10px', border: '2px solid var(--primary-green)', marginTop: '2rem' }}>
             <h4 style={{ color: 'var(--primary-green)', marginBottom: '1.5rem', textAlign: 'center' }}>Our Tech Stack</h4>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', textAlign: 'center' }}>
-              <div>
+              <div style={{ maxWidth: '200px', margin: '0 auto' }}>
                 <i className="fab fa-jenkins fa-3x" style={{ color: 'var(--accent-blue)', marginBottom: '1rem' }}></i>
                 <h5 style={{ color: 'var(--white)', marginBottom: '0.5rem' }}>Jenkins</h5>
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>CI/CD Pipeline</p>
               </div>
-              <div>
+              <div style={{ maxWidth: '200px', margin: '0 auto' }}>
                 <i className="fas fa-dharmachakra fa-3x" style={{ color: '#326CE5', marginBottom: '1rem' }}></i>
                 <h5 style={{ color: 'var(--white)', marginBottom: '0.5rem' }}>Kubernetes</h5>
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Container Orchestration</p>
               </div>
-              <div>
+              <div style={{ maxWidth: '200px', margin: '0 auto' }}>
                 <i className="fas fa-ship fa-3x" style={{ color: '#FF6B35', marginBottom: '1rem' }}></i>
                 <h5 style={{ color: 'var(--white)', marginBottom: '0.5rem' }}>ArgoCD</h5>
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>GitOps Delivery</p>
               </div>
-              <div>
+              <div style={{ maxWidth: '200px', margin: '0 auto' }}>
                 <i className="fas fa-key fa-3x" style={{ color: '#5C8A3B', marginBottom: '1rem' }}></i>
                 <h5 style={{ color: 'var(--white)', marginBottom: '0.5rem' }}>Vault</h5>
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Secrets Management</p>
               </div>
-              <div>
+              <div style={{ maxWidth: '200px', margin: '0 auto' }}>
                 <i className="fas fa-cube" style={{ color: '#623CE4', marginBottom: '1rem' }}></i>
                 <h5 style={{ color: 'var(--white)', marginBottom: '0.5rem' }}>Terraform</h5>
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Multi-Cloud IaC</p>
               </div>
-              <div>
+              <div style={{ maxWidth: '200px', margin: '0 auto' }}>
                 <i className="fas fa-cogs" style={{ color: '#EE0000', marginBottom: '1rem' }}></i>
                 <h5 style={{ color: 'var(--white)', marginBottom: '0.5rem' }}>Ansible</h5>
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Configuration Management</p>
               </div>
-              <div>
+              <div style={{ maxWidth: '200px', margin: '0 auto' }}>
                 <i className="fas fa-shield-alt fa-3x" style={{ color: '#1E90FF', marginBottom: '1rem' }}></i>
                 <h5 style={{ color: 'var(--white)', marginBottom: '0.5rem' }}>Trivy</h5>
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Security Scanning</p>
               </div>
-              <div>
+              <div style={{ maxWidth: '200px', margin: '0 auto' }}>
                 <i className="fas fa-project-diagram fa-3x" style={{ color: '#F46A00', marginBottom: '1rem' }}></i>
                 <h5 style={{ color: 'var(--white)', marginBottom: '0.5rem' }}>SonarQube</h5>
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>Code Quality</p>
               </div>
-              <div>
+              <div style={{ maxWidth: '200px', margin: '0 auto' }}>
                 <i className="fab fa-aws fa-3x" style={{ color: '#FF9900', marginBottom: '1rem' }}></i>
                 <h5 style={{ color: 'var(--white)', marginBottom: '0.5rem' }}>AWS</h5>
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>EKS & Services</p>
               </div>
-              <div>
+              <div style={{ maxWidth: '200px', margin: '0 auto' }}>
                 <i className="fas fa-cloud fa-3x" style={{ color: '#4285F4', marginBottom: '1rem' }}></i>
                 <h5 style={{ color: 'var(--white)', marginBottom: '0.5rem' }}>GCP</h5>
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>GKE & Services</p>
               </div>
-              <div>
+              <div style={{ maxWidth: '200px', margin: '0 auto' }}>
                 <i className="fab fa-microsoft fa-3x" style={{ color: '#0078D4', marginBottom: '1rem' }}></i>
                 <h5 style={{ color: 'var(--white)', marginBottom: '0.5rem' }}>Azure</h5>
                 <p style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>AKS & Services</p>
