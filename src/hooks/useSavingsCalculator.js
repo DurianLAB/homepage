@@ -26,7 +26,8 @@ export const useSavingsCalculator = () => {
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [updateCosts, isSimulationActive]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSimulationActive]);
 
   const updateWorkload = useCallback((newWorkload) => {
     setWorkload(newWorkload);

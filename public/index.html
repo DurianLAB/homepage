@@ -10,7 +10,7 @@
     />
     <title>DurianLAB IT Consulting</title>
     <link rel="icon" type="image/png" href="%PUBLIC_URL%/logo.png" />
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com;">
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.socialintents.com;"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
@@ -59,7 +59,114 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <div style="display: none;">Docker Version: DOCKER_IMAGE_VERSION</div>
-  </body>
+     <div id="root"></div>
+     <div style="display: none;">Docker Version: DOCKER_IMAGE_VERSION</div>
+     <!-- Custom styling for Social Intents Slack widget using official selectors -->
+     <script>
+       // Force override widget styles after it loads
+       function forceWidgetStyles() {
+         // Create style element with max specificity
+         const style = document.createElement('style');
+         style.textContent = `
+           /* Override everything with highest specificity */
+           html body div[id*="socialintents"],
+           html body div[class*="si-"],
+           html body .si-container,
+           html body .si-widget,
+           html body .si-chat,
+           html body .si-content {
+             background-color: #0a1322 !important;
+             color: #CCCCCC !important;
+             font-family: 'Open Sans', sans-serif !important;
+           }
+           
+           /* Override ALL children */
+           html body div[id*="socialintents"] *,
+           html body div[class*="si-"] *,
+           html body .si-container *,
+           html body .si-widget *,
+           html body .si-chat *,
+           html body .si-content * {
+             background-color: #0a1322 !important;
+             color: #CCCCCC !important;
+             font-family: 'Open Sans', sans-serif !important;
+             border-color: #5C8A3B !important;
+           }
+           
+           /* Specific overrides */
+           html body #title-text {
+             color: #FFFFFF !important;
+             font-family: 'Montserrat', sans-serif !important;
+             background-color: #5C8A3B !important;
+           }
+           
+           html body .si-av-list-intro {
+             color: #CCCCCC !important;
+             background-color: transparent !important;
+           }
+           
+           html body .si-comment-wrapper-user .si-comment {
+             background-color: #5C8A3B !important;
+             color: #FFFFFF !important;
+           }
+           
+           html body .si-comment-wrapper-admin .si-comment {
+             background-color: #1a2a3a !important;
+             color: #FFFFFF !important;
+           }
+           
+           html body .si-container textarea,
+           html body .si-widget textarea,
+           html body .si-container input[type="text"],
+           html body .si-widget input[type="text"] {
+             background-color: #1a2a3a !important;
+             border: 1px solid #3D5A27 !important;
+             color: #CCCCCC !important;
+             font-family: 'Open Sans', sans-serif !important;
+             border-radius: 5px !important;
+           }
+           
+           html body .btn,
+           html body .btnSend,
+           html body .btnEmoji,
+           html body .btnFile {
+             background-color: #5C8A3B !important;
+             color: #FFFFFF !important;
+             font-family: 'Montserrat', sans-serif !important;
+           }
+           
+           /* Override any inline styles */
+           html body div[id*="socialintents"][style],
+           html body div[class*="si-"][style] {
+             background-color: #0a1322 !important;
+             color: #CCCCCC !important;
+           }
+         `;
+         document.head.appendChild(style);
+         
+         // Force inline style overrides
+         setTimeout(() => {
+           document.querySelectorAll('div[id*="socialintents"], div[class*="si-"]').forEach(el => {
+             el.style.setProperty('background-color', '#0a1322', 'important');
+             el.style.setProperty('color', '#CCCCCC', 'important');
+           });
+         }, 100);
+       }
+       
+       // Apply immediately and on load
+       forceWidgetStyles();
+       window.addEventListener('load', forceWidgetStyles);
+       setTimeout(forceWidgetStyles, 1000);
+       setTimeout(forceWidgetStyles, 3000);
+     </script>
+     <!-- Slack Live Chat Widget (Social Intents) -->
+     <script type="text/javascript">
+       var si_js = document.createElement('script');
+       si_js.type = 'text/javascript';
+       si_js.async = true;
+       si_js.src = '//www.socialintents.com/api/chat/socialintents.1.4.js#2c9fab3f9bd15a2c019bd45e3eb1015e';
+       var s = document.getElementsByTagName('script')[0];
+       s.parentNode.insertBefore(si_js, s);
+     </script>
+   </body>
 </html>
