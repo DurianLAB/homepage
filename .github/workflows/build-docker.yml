@@ -3,11 +3,13 @@ on:
   push:
     branches:
       - 'release/*'
+      - 'update/change-services-pack'  # Temporary for testing
     tags:
       - 'v*'
   pull_request:
     branches:
       - 'release/*'
+      - 'update/change-services-pack'  # Temporary for testing
 
 jobs:
   build:
