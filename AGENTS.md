@@ -17,6 +17,7 @@
 - Use const/let instead of var
 - Prefer arrow functions for callbacks
 - Use template literals for string interpolation
+- No emojis in code comments or communication
 
 ## Error Handling
 - Handle form submission errors gracefully
