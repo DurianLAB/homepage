@@ -1,6 +1,6 @@
 {
   "name": "durianlab-homepage",
-  "version": "1.4.4",
+  "version": "1.4.6",
   "private": true,
   "dependencies": {
     "build": "^0.1.4",

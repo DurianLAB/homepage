@@ -10,13 +10,12 @@ export const useSavingsCalculator = () => {
   const [isSimulationActive, setIsSimulationActive] = useState(false); // Start inactive
 
   const updateCosts = useCallback(() => {
-    setServices(prevServices => {
-      const { services: updatedServices, totalCost } = updateSimulatedCloudCosts([...prevServices]);
-      setCloudCost(totalCost);
-      setSavings(calculateSavings(workload));
-      return updatedServices;
-    });
-  }, [workload]);
+    const { services: updatedServices, totalCost } = updateSimulatedCloudCosts([...services]);
+    setServices(updatedServices);
+    setCloudCost(totalCost);
+    setSavings(calculateSavings(workload));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [workload]); // Removed services from dependencies to prevent infinite loop
 
   useEffect(() => {
     updateCosts(); // Initial update
