@@ -67,18 +67,19 @@
        function forceWidgetStyles() {
          // Create style element with max specificity
          const style = document.createElement('style');
-         style.textContent = `
-           /* Override everything with highest specificity */
-           html body div[id*="socialintents"],
-           html body div[class*="si-"],
-           html body .si-container,
-           html body .si-widget,
-           html body .si-chat,
-           html body .si-content {
-             background-color: #0a1322 !important;
-             color: #CCCCCC !important;
-             font-family: 'Open Sans', sans-serif !important;
-           }
+          style.textContent = `
+            /* Override everything with highest specificity */
+            html body div[id*="socialintents"],
+            html body div[class*="si-"],
+            html body .si-container,
+            html body .si-widget,
+            html body .si-chat,
+            html body .si-content {
+              background-color: #0a1322 !important;
+              color: #CCCCCC !important;
+              font-family: 'Open Sans', sans-serif !important;
+
+            }
            
            /* Override ALL children */
            html body div[id*="socialintents"] *,
@@ -144,20 +145,22 @@
          `;
          document.head.appendChild(style);
          
-         // Force inline style overrides
-         setTimeout(() => {
-           document.querySelectorAll('div[id*="socialintents"], div[class*="si-"]').forEach(el => {
-             el.style.setProperty('background-color', '#0a1322', 'important');
-             el.style.setProperty('color', '#CCCCCC', 'important');
-           });
-         }, 100);
+          // Force inline style overrides
+          setTimeout(() => {
+            document.querySelectorAll('div[id*="socialintents"], div[class*="si-"]').forEach(el => {
+              el.style.setProperty('background-color', '#0a1322', 'important');
+              el.style.setProperty('color', '#CCCCCC', 'important');
+
+            });
+          }, 100);
        }
        
-       // Apply immediately and on load
-       forceWidgetStyles();
-       window.addEventListener('load', forceWidgetStyles);
-       setTimeout(forceWidgetStyles, 1000);
-       setTimeout(forceWidgetStyles, 3000);
+        // Apply immediately and on load
+        forceWidgetStyles();
+        window.addEventListener('load', forceWidgetStyles);
+        setTimeout(forceWidgetStyles, 1000);
+        setTimeout(forceWidgetStyles, 3000);
+        setTimeout(forceWidgetStyles, 5000);
      </script>
      <!-- Slack Live Chat Widget (Social Intents) -->
      <script type="text/javascript">

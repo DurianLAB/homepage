@@ -10,6 +10,7 @@ import Calculator from './components/Calculator';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 // Hooks
 import { useSavingsCalculator } from './hooks/useSavingsCalculator';
@@ -64,9 +65,10 @@ function App() {
         <Pricing />
         <Projects />
         <Contact onSubmit={handleContactSubmit} />
-      </main>
-      <Footer />
-    </div>
+       </main>
+       <ScrollToTop />
+       <Footer />
+     </div>
   );
 }
 
