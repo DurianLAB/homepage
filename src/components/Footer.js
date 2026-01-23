@@ -46,8 +46,15 @@ const Footer = () => {
             <p>PHONE: 909 632 5296</p>
           </div>
         </div>
+        <div className="social-links">
+          <h3>Social Links</h3>
+          <a href="https://github.com/DurianLAB" target="_blank" rel="noopener noreferrer"><i className="fab fa-github fa-2x"></i> GitHub</a>
+        </div>
         <div className="powered-by">
           <p>Powered by DurianLAB</p>
+        </div>
+        <div className="copyright">
+          <p>&copy; 2026 durianlab.tech All rights reserved.</p>
         </div>
       </div>
     </footer>
