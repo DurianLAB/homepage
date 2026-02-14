@@ -11,11 +11,7 @@ const Projects = () => {
             <p>Designed and deployed a highly secure, scalable cloud environment for a financial institution.</p>
             <p className="tech-stack"><strong>Technologies:</strong> AWS, Kubernetes, Vault</p>
           </div>
-          <div className="project-card">
-            <h3>AI-Driven Data Platform</h3>
-            <p>Developed an AI-powered data processing platform for real-time analytics and reporting.</p>
-            <p className="tech-stack"><strong>Technologies:</strong> Python, TensorFlow, Azure Data Factory</p>
-          </div>
+
         </div>
       </div>
     </section>
