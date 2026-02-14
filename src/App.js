@@ -4,6 +4,7 @@ import './App.css';
 // Components
 import Header from './components/Header';
 import Hero from './components/Hero';
+import CloudPricingBanner from './components/CloudPricingBanner';
 import Services from './components/Services';
 import Pricing from './components/Pricing';
 import Calculator from './components/Calculator';
@@ -16,7 +17,7 @@ import ScrollToTop from './components/ScrollToTop';
 import { useSavingsCalculator } from './hooks/useSavingsCalculator';
 
 function App() {
-  const { cloudCost, savings, workload, updateWorkload, isSimulationActive, toggleSimulation, refreshCosts } = useSavingsCalculator();
+  const { cloudCost, savings, workload, updateWorkload } = useSavingsCalculator();
 
   const handleContactSubmit = async (event) => {
     event.preventDefault();
@@ -29,30 +30,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-       <div id="running-banner" className="running-banner">
-         <div className="banner-content">
-           <span>
-             Current Cloud Cost: $<span id="cloud-cost">{cloudCost}</span>
-             {isSimulationActive && <span className="sim-status"> • LIVE</span>}
-           </span>
-           <div className="simulation-controls">
-             <button
-               onClick={toggleSimulation}
-               className={`sim-btn ${isSimulationActive ? 'active' : ''}`}
-               title={isSimulationActive ? 'Pause cost simulation' : 'Start cost simulation'}
-             >
-               {isSimulationActive ? '⏸️' : '▶️'}
-             </button>
-             <button
-               onClick={refreshCosts}
-               className="sim-btn"
-               title="Refresh costs manually"
-             >
-               🔄
-             </button>
-           </div>
-         </div>
-       </div>
+       <CloudPricingBanner />
       <main>
         <Hero />
         <Services />

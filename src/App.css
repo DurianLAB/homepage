@@ -73,6 +73,149 @@
     100% { transform: translateX(-100%); }
 }
 
+/* AWS Pricing Banner Styles */
+.running-banner {
+    background-color: var(--dark-green);
+    color: var(--white);
+    padding: 0.5rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.running-banner.loading {
+    background-color: var(--background-mid);
+}
+
+.running-banner.error {
+    background-color: #8B4513;
+}
+
+.banner-content-static {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+/* Marquee styles */
+.marquee-container {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.marquee-content {
+    display: flex;
+    width: max-content;
+    animation: marqueeScroll 60s linear infinite;
+}
+
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding-right: 3rem;
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.pricing-item {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 3rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.pricing-item strong {
+    color: #FFD700;
+    margin-right: 0.5rem;
+    font-weight: 700;
+}
+
+.pricing-item small {
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.update-time {
+    margin-right: 3rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+.loading-text, .error-text {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.refresh-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+}
+
+.refresh-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Provider Labels */
+.provider-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    margin-right: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.aws-label {
+    background: #FF9900;
+    color: #000;
+}
+
+.gcp-label {
+    background: #4285F4;
+    color: #fff;
+}
+
+.provider-aws {
+    color: #FF9900;
+}
+
+.provider-gcp {
+    color: #4285F4;
+}
+
+.provider-separator {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin: 0 2rem;
+}
+
 /* Color Palette */
 :root {
     --primary-green: #5C8A3B; /* Durian main green */
