@@ -83,7 +83,7 @@ clean-build: ## Clean only build artifacts
 
 docker-build: ## Build Docker image
 	@echo "Building Docker image..."
-	docker build --build-arg VERSION=$(VERSION) -t durianlab-homepage .
+	docker build --platform linux/amd64 --build-arg VERSION=$(VERSION) -t durianlab-homepage .
 
 docker-tag: ## Tag Docker image for Docker Hub
 	@echo "Tagging Docker image for $(DOCKER_REPO)..."
